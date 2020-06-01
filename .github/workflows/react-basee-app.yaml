@@ -7,6 +7,8 @@ name: craete react-base-app class2
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,11 +21,13 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    # Install nodeJS
-    - name: Install nodeJS
+    
+    # Install NodeJS
+    - name: Install NodeJS
       uses: actions/setup-node@v2-beta
-
+      with:
+        node-version: 12
+    
     # Install Yarn
     - uses: borales/actions-yarn@v2.0.0
       with:
